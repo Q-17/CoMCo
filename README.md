@@ -59,7 +59,7 @@ Performs preference-based reranking on hard cases using Qwen2.5-VL. Given an ima
 > All tool outputs are cached through `ToolRegistry` on disk and mirrored into the blackboard state.
 > Configure `qwen25vl` and prompt templates in `comco/configs/default.yaml`.
 
-## Quick start
+## 🚀 Quick start
 
 ```bash
 # For IMDB-IMG/Walmart-IMG
