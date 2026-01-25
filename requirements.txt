@@ -1,0 +1,14 @@
+numpy
+scipy
+tqdm
+pillow
+pyyaml
+pydantic
+requests
+ftfy
+regex
+torch
+transformers
+sentence-transformers
+# OpenAI CLIP (official)
+git+https://github.com/openai/CLIP.git
