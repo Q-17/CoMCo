@@ -1,0 +1,79 @@
+clip_model: "ViT-L/14"
+rounds: 3
+seed: 42
+
+candidates:
+  topk: 100
+  shortlist_mllm: 10
+
+control:
+  group_jaccard_threshold: 0.2
+  group_topk_for_consensus: 10
+  lambda_consensus: 0.2
+  hub_penalty_mu: 0.15
+  rerank_budget_ratio: 0.3
+
+fusion:
+  # initial weights; ControlAgent may adapt across rounds
+  w_anchor: 0.7
+  w_semantic: 0.2
+  w_attribute: 0.2
+  w_mllm: 0.8
+
+qwen25vl:
+  model: "qwen2.5vl:7b"
+  host: "127.0.0.1"
+  temperature: 0.01
+
+prompts:
+  caption: "You are a precise image captioner. Describe the image in one concise sentence focusing on identity, key attributes, and context. Do NOT add any extra commentary."
+  # Legacy fallback (desc-only). Prefer table_abstract / kg_abstract when available.
+  summary_prefix: "You are a knowledge distillation assistant. Summarize the core identity in ONE concise sentence. Use only input facts. Output only the final sentence."
+
+  # Table abstract (name + description) --- matches your `abstractbyqwen2.5` script
+  table_abstract: |
+    You are a knowledge distillation assistant.
+
+    The input is the information about a single {entity_type} from a table.
+
+    - name: {name}
+    - description: {description}
+
+    Your task:
+    1) Summarize the core identity of this {entity_type} in ONE concise sentence.
+    2) Use only information explicitly present above.
+    3) Do NOT add any new facts or make assumptions.
+    4) Avoid emotional, stylistic, or evaluative language.
+    5) Output only the final clean sentence. No explanation.
+
+  # KG abstract (structured neighbors) --- matches your neighbor-based abstract script
+  kg_abstract: |
+    You are a knowledge distillation assistant.
+
+    The input is a structured description of an entity:
+    - The first line describes the entity itself.
+    - The remaining lines describe relations to neighboring entities.
+
+    Your task:
+    1) Summarize the core identity of the entity in ONE concise sentence.
+    2) Extract only information explicitly present in the input.
+    3) Do NOT add any new facts or make assumptions.
+    4) Avoid emotional, stylistic, or evaluative language.
+    5) Output only the final clean sentence. No explanation.
+
+    {text}
+  visual_attrs: "Extract the most salient visual attributes from this image as short noun phrases. Return ONLY a JSON array of strings."
+  struct_attrs_prefix: "Extract the most salient entity attributes as short noun phrases from the description. Return ONLY a JSON array of strings."
+
+kg:
+  max_hops: 1
+  max_edges: 5
+  max_nodes: 5
+
+sentence_encoder:
+  model_name: "sentence-transformers/all-MiniLM-L6-v2"
+  device: "cpu"
+  batch_size: 64
+  normalize: true
+
+cache_dir: .cache/comco

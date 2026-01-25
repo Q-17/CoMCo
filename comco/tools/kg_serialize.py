@@ -1,0 +1,30 @@
+from __future__ import annotations
+
+"""Graph2Text serialization for KG neighbor subgraphs.
+
+This matches the template you used:
+
+  [ENTITY] <entity_desc>
+  [RELATION] <relation> -> <neighbor_desc>
+
+For tool usage we emit a **multiline** string (joined with newlines), because
+your abstract generation prompt assumes the first line is the entity itself and
+subsequent lines are its neighbor relations.
+"""
+
+from typing import Dict
+
+from .kg_neighbors import KGGraphIndex, _clean_rel
+
+
+def serialize_graph_to_text_desc(g: Dict, graph: KGGraphIndex) -> str:
+    center = g.get("center", "")
+    edges = g.get("edges", []) or []
+    center_desc = graph.attrs.get(center, {}).get("desc", "") or center
+
+    lines = [f"[ENTITY] {center_desc}"]
+    for (h, r, t) in edges:
+        t_desc = graph.attrs.get(t, {}).get("desc", "") or t
+        r_txt = _clean_rel(r)
+        lines.append(f"[RELATION] {r_txt} -> {t_desc}")
+    return "\n".join(lines).strip()
