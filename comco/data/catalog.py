@@ -47,13 +47,6 @@ def load_images(image_root: str, imageid_file: str) -> Tuple[List[str], Dict[str
 
 
 def load_entities(entities_full_file: str) -> Tuple[List[str], Dict[str, str], Dict[str, str]]:
-    """Load text ids, optional names, and descriptions.
-
-    Supported formats (best-effort):
-    - KG-style 4 columns: inner_id\ttext_id\t...\tdesc  (we use inner_id as the entity id)
-    - Table-style (>=3 columns): id\t...\tname\tdescription (we use last-2 as name, last-1 as desc)
-    - 2 columns: id\tdesc
-    """
     rows = read_tsv(entities_full_file)
     text_ids: List[str] = []
     descs: Dict[str, str] = {}
@@ -117,7 +110,6 @@ class DatasetCatalog:
             raise FileNotFoundError(self.image_root)
 
     def load(self) -> Tuple[List[str], Dict[str, str], List[str], Dict[str, str], Dict[str, str]]:
-        """Return (image_ids, image_paths, text_ids, text_descs, text_names)."""
         self.validate()
         image_ids, image_paths = load_images(self.image_root, self.imageid_file)
         text_ids, text_descs, text_names = load_entities(self.entities_full_file)
