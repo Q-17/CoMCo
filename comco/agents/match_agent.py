@@ -37,13 +37,6 @@ class MatchAgentConfig:
 
 class MatchAgent:
     """Match agent: build candidate sets and evidence signals, then fuse into S_evid.
-
-    Paper-faithful responsibilities:
-    1) Candidate retrieval using anchor signal (coarse top-K).
-    2) Compute low-cost signals: anchor, semantic, attribute.
-    3) Per-signal softmax normalization over candidates and weighted fusion.
-    4) Cache tool outputs on the blackboard (captions, summaries, attrs, embeddings).
-
     This agent calls tools only via ToolRegistry to enable persistent disk caching.
     """
 
