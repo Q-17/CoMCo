@@ -320,6 +320,7 @@ class MatchAgent:
         den = float(np.linalg.norm(gv) * np.linalg.norm(gs) + 1e-12)
         return num / den
 
+    
     # -------------------------
     # Fusion
     # -------------------------
