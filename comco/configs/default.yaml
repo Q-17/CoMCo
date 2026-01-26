@@ -1,4 +1,4 @@
-clip_model: "ViT-L/14"
+clip_model: "ViT-B/32"
 rounds: 3
 seed: 42
 
@@ -14,7 +14,6 @@ control:
   rerank_budget_ratio: 0.3
 
 fusion:
-  # initial weights; ControlAgent may adapt across rounds
   w_anchor: 0.7
   w_semantic: 0.2
   w_attribute: 0.2
@@ -27,10 +26,10 @@ qwen25vl:
 
 prompts:
   caption: "You are a precise image captioner. Describe the image in one concise sentence focusing on identity, key attributes, and context. Do NOT add any extra commentary."
-  # Legacy fallback (desc-only). Prefer table_abstract / kg_abstract when available.
+
   summary_prefix: "You are a knowledge distillation assistant. Summarize the core identity in ONE concise sentence. Use only input facts. Output only the final sentence."
 
-  # Table abstract (name + description) --- matches your `abstractbyqwen2.5` script
+  # Table abstract 
   table_abstract: |
     You are a knowledge distillation assistant.
 
@@ -46,7 +45,7 @@ prompts:
     4) Avoid emotional, stylistic, or evaluative language.
     5) Output only the final clean sentence. No explanation.
 
-  # KG abstract (structured neighbors) --- matches your neighbor-based abstract script
+  # KG abstract 
   kg_abstract: |
     You are a knowledge distillation assistant.
 
