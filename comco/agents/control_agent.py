@@ -27,14 +27,6 @@ class ControlAgentConfig:
 
 class ControlAgent:
     """Global consistency controller.
-
-    Implements the paper's key operations:
-    1) group discovery from candidate-set overlaps
-    2) coherence-aware calibration (group consensus)
-    3) cautious global regulation (hubness penalty)
-    4) hard-case scheduling (small-margin images)
-
-    Weight updates and stop criteria are provided as conservative heuristics (pluggable).
     """
 
     def __init__(self, cfg: ControlAgentConfig):
@@ -147,9 +139,7 @@ class ControlAgent:
         state.hard_cases = [iid for iid, _ in margins[:budget]]
 
     def _update_weights(self, state: BlackboardState) -> None:
-        """Conservative heuristic; paper uses rule-based bounded step updates.
-
-        Here we only increase mllm weight if margins are low.
+        """
         """
         avg_m = state.avg_margin
         w = dict(state.weights)
