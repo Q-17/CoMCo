@@ -17,7 +17,7 @@
 ---
 
 ## 📚 Dataset
-> We evaluate CoMCo on four datasets covering both KG-visual and table-visual matching scenarios. For the KG-visual setting, we use **FB15K-IMG** and **WN18IMG**, where structured entities are KG nodes characterized by attributes and relation triples, and visual entities are images. For the table-visual setting, we construct two real-world benchmarks based on **IMDB** and **Walmart**, where structured entities are table rows described by multiple attributes and visual entities are web images.
+> We evaluate CoMCo on four datasets covering both KG-visual and table-visual matching scenarios. For the KG-visual setting, we use **FB15K-IMG** and **WN18-IMG**, where structured entities are KG nodes characterized by attributes and relation triples, and visual entities are images. For the table-visual setting, we construct two real-world benchmarks based on **IMDB** and **Walmart**, where structured entities are table rows described by multiple attributes and visual entities are web images.
 
 <div align="center">
 
