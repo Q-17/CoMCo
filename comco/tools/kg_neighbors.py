@@ -1,14 +1,6 @@
 from __future__ import annotations
 
 """KG neighbor subgraph sampling tool.
-
-This module ports your standalone `GraphIndex + bfs_sample` logic into the repo
-so that it can be invoked as a Tool from agents, with ToolRegistry caching.
-
-Design goals:
-1) Minimal behavior drift from your scripts.
-2) Deterministic output for a given (entity_id, params, graph files).
-3) Usable for building structured serialization r_s and KG abstracts a_s.
 """
 
 from dataclasses import dataclass
@@ -29,12 +21,6 @@ class KGSampleParams:
 
 class KGGraphIndex:
     """A lightweight in-memory KG index.
-
-    Notes
-    -----
-    - We treat `entity_id` as the *first column* id in entities_full.txt, which
-      aligns with your neighbor/abstract generation scripts.
-    - The KG triples file is assumed to be TSV with 3 columns: head, relation, tail.
     """
 
     def __init__(self, kg_train_path: str, entities_full_path: str):
