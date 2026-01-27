@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-"""Generate table abstracts from entities_full.txt using Qwen (Ollama).
-"""
 
 from __future__ import annotations
 
