@@ -1,10 +1,5 @@
 # -*- coding: utf-8 -*-
 """Generate table abstracts from entities_full.txt using Qwen (Ollama).
-
-This mirrors your standalone script for IMDB/Walmart.
-
-Input:  <dataset_root>/entities_full.txt
-Output: <dataset_root>/abstractbyqwen2.5*.txt (entity_id\tone-sentence)
 """
 
 from __future__ import annotations
