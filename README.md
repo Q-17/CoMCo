@@ -66,7 +66,7 @@ ollama serve
 
 # pull the required models
 ollama pull qwen2.5:7b
-ollama pull qwen2.5-vl:7b
+ollama pull qwen2.5vl:7b
 ```
 
 ```bash
