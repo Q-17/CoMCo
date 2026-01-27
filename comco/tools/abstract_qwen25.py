@@ -2,14 +2,14 @@ from __future__ import annotations
 
 """Qwen2.5-based abstract generation tools.
 
-We implement two concrete tools aligned with your scripts:
+We implement two concrete tools:
 
 1) KGAbstractTool: takes the structured serialization r_s (first line entity,
    remaining lines relations) and produces a ONE-sentence abstract.
 
 2) TableAbstractTool: takes (name, description) from a table row and produces a ONE-sentence abstract.
 
-Both tools call the same Ollama qwen2.5 / qwen2.5-vl endpoint (text-only request).
+Both tools call the same Ollama qwen2.5 / qwen2.5-vl endpoint.
 """
 
 from dataclasses import dataclass
