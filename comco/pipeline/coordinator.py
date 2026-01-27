@@ -24,16 +24,9 @@ class Coordinator:
         for r in range(self.cfg.rounds):
             state.round_idx = r
 
-            # 1) evidence building
             self.match.run(state)
-
-            # 2) global control 
             self.control.run(state)
-
-            # 3) selective MLLM rerank 
             self.rerank.run(state)
-
-            # 4) re-fuse evidence 
             self.match.run(state)
 
             if state.stop:
