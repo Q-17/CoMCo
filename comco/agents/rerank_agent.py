@@ -63,17 +63,12 @@ class RerankAgent:
             )
             if not ranking:
                 continue
-
-            # Ensure we have a complete permutation over the shortlist.
-            # If the model returns a partial list (or only a best id), we
-            # append missing candidates in their original shortlist order.
+            
             ranking = [tid for tid in ranking if tid in shortlist]
             seen = set(ranking)
             if len(ranking) < len(shortlist):
                 ranking.extend([tid for tid in shortlist if tid not in seen])
 
-            # map ranking -> z scores in [0,1]
-            # simple: z=1 for best, else linearly decays within shortlist
             n = len(shortlist)
             pos = {tid: idx for idx, tid in enumerate(ranking) if tid in shortlist}
             for tid in shortlist:
