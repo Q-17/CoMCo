@@ -9,7 +9,6 @@ from .qwen25_vl_client import OllamaQwenVLConfig, invoke_ollama_chat
 
 
 def _parse_json_list(text: str) -> List[str]:
-    """Parse a JSON list from model output; tolerate surrounding text."""
     if not text:
         return []
     text = text.strip()
@@ -50,7 +49,6 @@ class QwenVisualAttrConfig:
 
 
 class Qwen2_5VLVisualAttrTool(Tool[Tuple[str, str], List[str]]):
-    """(image_id, image_path) -> list of attribute phrases"""
 
     def __init__(self, cfg: QwenVisualAttrConfig):
         self.cfg = cfg
