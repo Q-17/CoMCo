@@ -1,12 +1,6 @@
 from __future__ import annotations
 
 """Structured serialization tool for KG entities.
-
-This tool combines:
-1) neighbor subgraph sampling (BFS)
-2) Graph2Text serialization
-
-So agents can request a deterministic structured text r_s for an entity.
 """
 
 from dataclasses import dataclass
