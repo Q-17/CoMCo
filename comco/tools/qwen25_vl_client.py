@@ -20,7 +20,7 @@ def invoke_ollama_chat(
     prompt: str,
     image_path: Optional[str] = None,
 ) -> str:
-    """Invoke Ollama /api/chat. If image_path is provided, send as base64 image."""
+    """Invoke Ollama /api/chat."""
     url = f"http://{cfg.host}:11434/api/chat"
 
     images = []
