@@ -20,8 +20,6 @@ class KGSampleParams:
 
 
 class KGGraphIndex:
-    """A lightweight in-memory KG index.
-    """
 
     def __init__(self, kg_train_path: str, entities_full_path: str):
         self.adj_undirected = defaultdict(set)  # entity -> set(neighbors)
