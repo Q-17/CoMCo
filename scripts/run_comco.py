@@ -3,9 +3,6 @@
 
 from __future__ import annotations
 
-"""Main entrypoint for running CoMCo.
-"""
-
 import argparse
 import os
 
@@ -106,7 +103,7 @@ def main():
     kg_abs_tool = Qwen2_5VLKGAbstractTool(abstract_cfg)
     table_abs_tool = Qwen2_5VLTableAbstractTool(abstract_cfg)
 
-    # Legacy summary tool (fallback)
+    # Legacy summary tool
     summary_tool = Qwen2_5VLSummaryTool(
         QwenSummaryConfig(qwen=qwen_cfg, prompt_prefix=str(prompts.get("summary_prefix", "")))
     )
@@ -129,7 +126,7 @@ def main():
         )
     )
 
-    # KG structured text tool (optional)
+    # KG structured text tool
     kg_struct_tool = None
     if state.dataset_mode == "kg":
         if not args.kg_train:
