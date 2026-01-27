@@ -38,7 +38,6 @@ class KGGraphIndex:
                 if len(parts) < 2:
                     continue
                 ent_id = parts[0].strip()
-                # Prefer KG-style 4th column as desc when present.
                 desc = parts[3].strip() if len(parts) >= 4 else (parts[-1].strip() if len(parts) >= 2 else "")
                 if desc and desc.lower() != "null":
                     self.attrs[ent_id] = {"desc": desc}
