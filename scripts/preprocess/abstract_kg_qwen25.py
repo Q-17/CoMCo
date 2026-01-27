@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-"""Generate KG abstracts from neighbors.txt using Qwen (Ollama).
-"""
 
 from __future__ import annotations
 
