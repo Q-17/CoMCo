@@ -1,12 +1,5 @@
 # -*- coding: utf-8 -*-
 """Generate KG abstracts from neighbors.txt using Qwen (Ollama).
-
-Input:  <dataset_root>/neighbors.txt
-Format: inner_id\tstructured_text(with TABs)
-Output: <dataset_root>/abstractbyqwen2.5*.txt (inner_id\tone-sentence)
-
-This script mirrors your standalone version, and is optional because the
-online pipeline can generate abstracts via tools with caching.
 """
 
 from __future__ import annotations
