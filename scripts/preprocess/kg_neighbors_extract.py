@@ -1,14 +1,5 @@
 # -*- coding: utf-8 -*-
 """Extract KG neighbor structured strings (neighbors.txt).
-
-This script is the offline/precompute equivalent of the KG tools:
-  KGGraphIndex + bfs_sample + Graph2Text serialization.
-
-Output format (per line):
-  <entity_id>\t<structured_text... as TAB-separated lines>
-
-We keep TAB separators to match your original workflow, but the tool pipeline
-in CoMCo uses multiline strings internally.
 """
 
 from __future__ import annotations
