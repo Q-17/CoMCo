@@ -9,7 +9,6 @@ OutputT = TypeVar("OutputT")
 
 @dataclass
 class ToolContext:
-    """Lightweight shared context passed into tools."""
     run_id: str = ""
     device: str = "cuda"
 
