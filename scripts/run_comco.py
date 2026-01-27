@@ -4,15 +4,6 @@
 from __future__ import annotations
 
 """Main entrypoint for running CoMCo.
-
-This is repo-local (not tied to any hardcoded dataset registry) and supports
-both table-style datasets (IMDB/Walmart) and KG-style datasets (WN18/FB15K...).
-
-Key design points matching your paper implementation:
-- Anchor embeddings are computed *on-the-fly* (no pre-saved .npy required)
-- Tools are explicit modules called from agents through ToolRegistry caching
-- KG mode can optionally build structured entity serializations r_s via BFS
-  sampling and then distill them into 1-sentence abstracts a_s using Qwen.
 """
 
 import argparse
