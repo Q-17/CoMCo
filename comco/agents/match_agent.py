@@ -173,7 +173,6 @@ class MatchAgent:
         if (state.dataset_mode or "table") == "kg" and self.kg_struct_tool is not None and self.kg_abstract_tool is not None:
             # 1) structured text r_s
             if tid not in state.serialized_struct:
-                # include params + entity id in key; params already embedded in tool instance
                 key_r = sha1_text(f"{state.dataset_name}:kg_struct:{tid}")
                 r_s = self.registry.get_or_run_json(
                     namespace=f"{self.qwen_namespace}/kg_struct",
@@ -210,7 +209,6 @@ class MatchAgent:
             state.summaries[tid] = summ
             return summ
 
-        # Fallback: previous desc-only summary tool
         desc = state.text_descs.get(tid, "")
         if self.summary_tool is None:
             state.summaries[tid] = desc
@@ -332,7 +330,6 @@ class MatchAgent:
             if not cands:
                 continue
 
-            # Ensure sem/attr signals exist when needed.
             for tid in cands:
                 state.ensure_edge(iid, tid)
                 if w.get("sem", 0.0) > 0.0 and "sem" not in state.signals[(iid, tid)]:
