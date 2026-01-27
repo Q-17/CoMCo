@@ -1,15 +1,6 @@
 from __future__ import annotations
 
 """Graph2Text serialization for KG neighbor subgraphs.
-
-This matches the template you used:
-
-  [ENTITY] <entity_desc>
-  [RELATION] <relation> -> <neighbor_desc>
-
-For tool usage we emit a **multiline** string (joined with newlines), because
-your abstract generation prompt assumes the first line is the entity itself and
-subsequent lines are its neighbor relations.
 """
 
 from typing import Dict
