@@ -46,7 +46,7 @@ def main():
         device=args.device,
     )
 
-    # Store in cache (dataset-level matrices)
+    
     clip_ns = args.clip_model.replace("/", "")
     registry.get_or_run_numpy(namespace=f"{clip_ns}", key="anchor_image_matrix", fn=lambda: img_mat)
     registry.get_or_run_numpy(namespace=f"{clip_ns}", key="anchor_text_matrix", fn=lambda: txt_mat)
