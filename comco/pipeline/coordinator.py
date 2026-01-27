@@ -27,13 +27,13 @@ class Coordinator:
             # 1) evidence building
             self.match.run(state)
 
-            # 2) global control (calibration + regulation + scheduling)
+            # 2) global control 
             self.control.run(state)
 
-            # 3) selective MLLM rerank (writes z into signals)
+            # 3) selective MLLM rerank 
             self.rerank.run(state)
 
-            # 4) re-fuse evidence (now with possible mllm signal)
+            # 4) re-fuse evidence 
             self.match.run(state)
 
             if state.stop:
