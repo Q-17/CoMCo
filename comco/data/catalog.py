@@ -16,20 +16,7 @@ def read_tsv(path: str) -> List[List[str]]:
     return rows
 
 
-def first_image_in_folder(folder: str) -> Optional[str]:
-    """Return the first image file path inside a folder."""
-    if not os.path.isdir(folder):
-        return None
-    exts = (".jpg", ".jpeg", ".png", ".bmp", ".webp")
-    for name in os.listdir(folder):
-        p = os.path.join(folder, name)
-        if os.path.isfile(p) and name.lower().endswith(exts):
-            return p
-    return None
-
-
 def load_images(image_root: str, imageid_file: str) -> Tuple[List[str], Dict[str, str]]:
-    """Load image ids and resolve each id to a local image path."""
     rows = read_tsv(imageid_file)
     img_ids: List[str] = []
     img_paths: Dict[str, str] = {}
@@ -38,8 +25,13 @@ def load_images(image_root: str, imageid_file: str) -> Tuple[List[str], Dict[str
             continue
         image_id, folder_name = parts[0], parts[1]
         folder = os.path.join(image_root, folder_name)
-        img_path = first_image_in_folder(folder)
-        if img_path is None:
+        if not os.path.isdir(folder):
+            continue
+        files = os.listdir(folder)
+        if not files:
+            continue
+        img_path = os.path.join(folder, files[0])
+        if not os.path.isfile(img_path):
             continue
         img_ids.append(image_id)
         img_paths[image_id] = img_path
@@ -56,11 +48,8 @@ def load_entities(entities_full_file: str) -> Tuple[List[str], Dict[str, str], D
         name = ""
         desc = ""
         if len(parts) >= 4:
-            # Keep entity id consistent with the rest of the pipeline: use the first field.
             tid = parts[0]
-            # Prefer the 4th column as desc when present (KG datasets).
             desc = parts[3]
-            # If it looks like a table row (longer columns), also capture name/desc from tail.
             if len(parts) >= 3:
                 name = parts[-2]
                 desc = parts[-1]
