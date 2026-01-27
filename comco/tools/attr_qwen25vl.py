@@ -12,13 +12,11 @@ def _parse_json_list(text: str) -> List[str]:
     if not text:
         return []
     text = text.strip()
-    # try direct
     try:
         obj = json.loads(text)
         if isinstance(obj, list):
             return [str(x).strip() for x in obj if str(x).strip()]
         if isinstance(obj, dict):
-            # common schema: {"attrs":[...]}
             for k in ["attrs", "attributes", "phrases"]:
                 if k in obj and isinstance(obj[k], list):
                     return [str(x).strip() for x in obj[k] if str(x).strip()]
