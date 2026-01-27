@@ -45,14 +45,7 @@ def invoke_ollama_chat(model: str, host: str, prompt: str, image_path: Optional[
 
 
 def parse_json_ranking(text: str) -> List[str]:
-    """Parse a JSON ranking list.
 
-    Expected output:
-      {"ranking": ["id1", "id2", ...]}
-
-    For robustness, we also accept a fallback {"best": "..."} and convert it
-    into a length-1 ranking.
-    """
     try:
         obj = json.loads(text)
     except json.JSONDecodeError:
