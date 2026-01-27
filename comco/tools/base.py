@@ -10,9 +10,6 @@ OutputT = TypeVar("OutputT")
 @dataclass
 class ToolContext:
     """Lightweight shared context passed into tools."""
-
-    # A stable identifier for the current experiment run. Tools may use it for
-    # logging, but caching is handled by ToolRegistry keys.
     run_id: str = ""
     device: str = "cuda"
 
