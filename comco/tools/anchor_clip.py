@@ -31,8 +31,6 @@ class ClipAnchorConfig:
 
 
 class ClipModelProvider:
-    """Lazy CLIP model loader."""
-
     def __init__(self, cfg: ClipAnchorConfig):
         self.cfg = cfg
         self._model = None
@@ -59,7 +57,6 @@ def count_bpe_tokens(tokenizer: _Tokenizer, text: str) -> int:
 
 
 def chunk_text_by_token_budget(tokenizer: _Tokenizer, text: str, max_ctx_len: int = 77) -> List[str]:
-    """Budget-safe chunking that guarantees clip.tokenize(..., truncate=False) will not throw."""
     content_budget = max_ctx_len - 2
     text = (text or "").strip()
     if not text:
@@ -226,7 +223,6 @@ def build_anchor_matrices(
     text_descs: Dict[str, str],
     device: str,
 ) -> Tuple[np.ndarray, np.ndarray]:
-    """Compute full matrices (for warmup / offline-style use)."""
     if clip is None:
         raise ImportError("OpenAI CLIP not available")
 
