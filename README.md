@@ -60,6 +60,14 @@ Performs preference-based reranking on hard cases using Qwen2.5-VL. Given an ima
 > Configure `qwen25vl` and prompt templates in `comco/configs/default.yaml`.
 
 ## 🚀 Quick start
+```bash
+# start the Ollama server
+ollama serve
+
+# pull the required models
+ollama pull qwen2.5:7b
+ollama pull qwen2.5-vl:7b
+```
 
 ```bash
 # For IMDB-IMG/Walmart-IMG
