@@ -30,7 +30,7 @@
 
 </div>
 
->**❗Note:** The links to the existing benchmark datasets we used (FB15K-IMG, WN18-IMG) are [here](https://zenodo.org/records/18427316), and the links to the datasets we constructed ourselves (IMDB-IMG, Walmart-IMG) are [here](https://zenodo.org/records/18418291).
+>**❗Note:** We provide links to the benchmark datasets used in our experiments (FB15K-IMG, WN18-IMG) [here](https://zenodo.org/records/18427316), and to our constructed datasets [here](https://zenodo.org/records/18418291).
 ---
 ## 🧰 Tools
 
