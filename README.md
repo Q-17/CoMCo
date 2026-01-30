@@ -11,13 +11,87 @@
 >> cd CoMCo
 >> pip install -r requirements.txt
 ```
-
 > NOTE: CLIP is installed from the official OpenAI repo.
 
+- CoMCo details:
+```bash
+CoMCo
+├── comco
+│   └── agents
+│       ├── control_agent.py
+│       ├── match_agent.py
+│       └── rerank_agent.py
+│   └── configs
+│       └── default.yaml
+│   └── core
+│       ├── registry.py
+│       └── state.py
+│   └── data
+│       └── catalog.py
+│   └── pipeline
+│       └── coordinator.py
+│   └── tools
+│       ├── abstract_qwen25.py
+│       ├── anchor_clip.py
+│       ├── attr_qwen25vl.py
+│       ├── base.py
+│       ├── caption_qwen25vl.py
+│       ├── kg_neighbors.py
+│       ├── mllm_rerank.py
+│       ├── qwen25_vl_client.py
+│       ├── sentence_encoder.py
+│       ├── summary_qwen25vl.py
+│       ├── kg_serialize.py
+│       └── kg_structured_text.py
+├── scripts
+│   └── preprocess
+│       ├── abstract_kg_qwen25.py
+│       ├── abstract_table_qwen25.py
+│       └── kg_neighbors_extract.py
+├── precompute_anchor.py
+├── run_comco.py
+├── requirements.txt
+└── README.md
+```
 ---
 
 ## 📚 Dataset
 > We evaluate CoMCo on four datasets covering both KG-visual and table-visual matching scenarios. For the KG-visual setting, we use **FB15K-IMG** and **WN18-IMG**, where structured entities are KG nodes characterized by attributes and relation triples, and visual entities are images. For the table-visual setting, we construct two real-world benchmarks based on **IMDB** and **Walmart**, where structured entities are table rows described by multiple attributes and visual entities are web images.
+- Download the benchmark datasets (FB15K-IMG, WN18-IMG) from [Zenodo](https://zenodo.org/records/18427316) (359.0 MB) and unzip them so that the files follow the directory structure below:
+```bash
+data
+├── FB15K
+│   └── FB15K-images/
+│   └── entity_description.txt
+│   └── imageid.txt
+│   └── relations.dict
+│   └── tarin.txt
+│   └── train_id.txt
+│   └── test.txt
+│   └── test_id.txt    
+├── WN18
+│   └── WN18-images/
+│   └── entity2text.txt
+│   └── imageid.txt
+│   └── dev.tsv
+│   └── relation2id.txt
+│   └── relations.txt
+│   └── test.tsv
+│   └── test2id.txt
+│   └── train.tsv
+│   └── train2id.txt
+```
+
+- Download our constructed datasets (IMDB-IMG, Walmart-IMG) from [Zenodo](https://zenodo.org/records/18418291) (3.1 GB) and unzip them so that the files follow the directory structure below:
+```bash
+data
+├── imdb
+│   └── imdb-images/
+│   └── IMDB.xlsx  
+├── walmart
+│   └── walmart-images/
+│   └── walmart.csv
+```
 
 <div align="center">
 
@@ -30,8 +104,8 @@
 
 </div>
 
->**❗Note:** We provide links to the benchmark datasets used in our experiments (FB15K-IMG, WN18-IMG) [here](https://zenodo.org/records/18427316), and to our constructed datasets [here](https://zenodo.org/records/18418291).
 ---
+
 ## 🧰 Tools
 
 **Serialization Tool**  
@@ -57,6 +131,8 @@ Performs preference-based reranking on hard cases using Qwen2.5-VL. Given an ima
 
 > All tool outputs are cached through `ToolRegistry` on disk and mirrored into the blackboard state.
 > Configure `qwen25vl` and prompt templates in `comco/configs/default.yaml`.
+
+---
 
 ## 🚀 Quick start
 ```bash
