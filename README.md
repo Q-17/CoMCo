@@ -30,8 +30,7 @@
 
 </div>
 
->**❗Note:** Since the full dataset package is relatively large, the anonymous repository does not have enough storage to host the data. We will **release the download links** here after the anonymized phase.
-
+>**❗Note:** The links to the existing benchmark datasets we used (FB15K-IMG, WN18-IMG) are [here](https://zenodo.org/records/18427316), and the links to the datasets we constructed ourselves (IMDB-IMG, Walmart-IMG) are [here](https://zenodo.org/records/18418291).
 ---
 ## 🧰 Tools
 
