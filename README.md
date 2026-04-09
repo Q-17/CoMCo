@@ -1,6 +1,6 @@
 # 🧠 CoMCo: Consistency-Aware Multi-Agent Coordination for Zero-Shot Cross-Modal Entity Matching (SIGIR'26)
 ![](https://img.shields.io/badge/version-1.0.0-blue)
->The Code for Our Paper：CoMCo: Consistency-Aware Multi-Agent Coordination for Zero-Shot Cross-Modal Entity Matching, SIGIR 2026.
+>**The Code for Our Paper：CoMCo: Consistency-Aware Multi-Agent Coordination for Zero-Shot Cross-Modal Entity Matching, SIGIR 2026.**
 
 >We present CoMCo, a multi-agent framework for zero-shot cross-modal entity matching, where no task-specific training is performed. It separates multiple matching signals construction from global decision making: the Match Agent fuses multiple matching signals beyond a single pretrained similarity score to produce more reliable pairwise evidence under noisy and ambiguous cross-modal data; the Control Agent improves global consistency by identifying latent coherent groups from candidate overlap and competition, calibrating candidate preferences with group-level coherence, mitigating misleading matches caused by the hubness phenomenon, and orchestrating iterative refinement; and the Rerank Agent is triggered only for hard cases, selectively invoking an MLLM to disambiguate confusable candidates.
 
