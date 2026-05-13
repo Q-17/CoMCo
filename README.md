@@ -172,3 +172,20 @@ The first run will compute and cache CLIP embeddings under:
 ## 🏅 Results
 
 ![alt text](image-1.png)
+
+## Citation
+
+If you find this work useful, please cite our paper:
+
+```bibtex
+@inproceedings{sigir2026comco,
+  title        = {{CoMCo}: Consistency-Aware Multi-Agent Coordination for Zero-Shot Cross-Modal Entity Matching},
+  author       = {Shiqi Zhang and Weixin Zeng and Ziheng Zhang and Wenzhe Hou and Weidong Xiao and Xiang Zhao},
+  booktitle    = {Proceedings of the 49th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  year         = {2026}
+}
+```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
